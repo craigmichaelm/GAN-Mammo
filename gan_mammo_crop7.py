@@ -11,7 +11,6 @@ import cv2
 import skimage.transform
 import sklearn.preprocessing
 import helper
-import pdb
 
 print("Loading in Mammogram data...")
 mgrams = readMammograms.readData(0)
@@ -114,7 +113,7 @@ update_G = trainerG.apply_gradients(g_grads)
 
 
 # Start training loop
-batch_size = 12 # Size of image batch to apply at each iteration.
+batch_size = 24 # Size of image batch to apply at each iteration.
 iterations = 2000 # Total number of iterations to use.
 cond =2 # Which condition to use: 0 = normal, 1 = benign, 2 = cancerous
 sample_directory = './figs_cancer2' # Directory to save sample images from generator in.
@@ -151,7 +150,6 @@ with tf.Session() as sess:
             saver.save(sess,model_directory+'/model-'+str(i)+'.cptk')
             print("Saved Model")
 
-pdb.set_trace()
 # Loading previous network to generate additional images
 sample_directory = './figs_cancer_synth' #Directory to save sample images from generator in.
 model_directory = './models_cancer' #Directory to load trained model from.
